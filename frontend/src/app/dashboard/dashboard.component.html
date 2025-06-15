@@ -1,0 +1,78 @@
+<app-modal-add-users *ngIf="isModalOpen" (close)="closeModal()" (refreshUser)="getAllUsers()"></app-modal-add-users>
+<app-modal-edit-user *ngIf="isModalEditOpen" (close)="closeEditModal()" [userId]="selectedUserId" (refreshUser)="getAllUsers()"></app-modal-edit-user>
+<div class="ml-[240px] px-6  pb-5">
+    <div class="text-2xl text-blue-500 font-medium mb-5">Users Dashboard</div>
+    <div class="flex justify-center items-center 2xl:justify-between flex-wrap w-full">
+        <div class="xl:w-[750px] w-full xl:mr-3 relative ">
+            <div class="absolute bottom-3 top-3 text-gray-500 left-1">
+                <mat-icon aria-hidden="false" aria-label="Example search icon" class="text-sm" fontIcon="search"></mat-icon>
+            </div>
+            <input class="w-full bg-white pl-8 py-3 placeholder:text-gray-500 search" type="text" name="" id="" placeholder="Search">
+        </div>
+            <button (click)="openModal()" class="bg-blue-500 text-white py-2 px-4 rounded-sm flex items-center cursor-pointer hover:bg-blue-600">
+                <div class="mr-1">Add user</div>
+                <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+            </button>
+        <div class="flex items-center  text-gray-700">
+            <span class="mx-2">Sort by</span>
+            <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_down icon" fontIcon="keyboard_arrow_down"></mat-icon>
+        </div>
+        <div class="flex items-center  text-gray-700">
+            <span class="mx-2">Saved search</span>
+            <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_down icon" fontIcon="keyboard_arrow_down"></mat-icon>
+        </div>
+        <div class="flex items-center  text-gray-700">
+            <mat-icon aria-hidden="false" aria-label="Example tune icon" fontIcon="tune"></mat-icon>
+        </div>
+    </div>
+    <div class="bg-white rounded-3xl my-8 overflow-x-auto ">
+        <div class="ml-3 py-5 font-medium ">List Users</div>
+        <ng-container *ngIf="users | async as user$">
+        <table class="min-w-[1000px] lg:min-w-full table-auto px-5">
+            <thead class="bg-sky-100 text-gray-500 ">
+                <tr>
+                <td class="py-2 px-6">Name</td>
+                <td>Create Date</td>
+                <td>Role</td>
+                <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of user$">
+                <td class="px-12 py-2 flex text-sm justify-between items-center">
+                    <div>
+                        <div>
+                            {{user.fristname +" "+user.lastname}}
+                        </div>
+                        <div class="text-xs text-gray-500">
+                            {{user.email}}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="bg-sky-500  w-28 py-[2px] rounded-lg text-white">{{user.role.roleName}}</button>
+                    </div>
+                </td>
+                <td class="text-sm text-gray-500">{{ user.create_at | date: 'dd, MMM yyyy' }}</td>
+                <td class="text-sm text-gray-500">Lorem ipsum .</td>
+                <td class="pt-4">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example border_color icon"
+                        class="actions mr-2 cursor-pointer"
+                        (click)="openEditModal(user.userId)"
+                        fontIcon="border_color">
+                    </mat-icon>
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Example delete icon"
+                        class="actions ml-2 cursor-pointer"
+                        (click)="onDelete(user.userId)"
+                        fontIcon="delete">
+                    </mat-icon>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+        </ng-container>
+    </div>
+</div>

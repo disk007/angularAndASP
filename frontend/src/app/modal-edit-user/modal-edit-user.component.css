@@ -1,0 +1,5 @@
+input:focus-visible {
+    outline: 1px solid var(--color-blue-500);
+    border-radius: 6px;
+    border: none;
+}

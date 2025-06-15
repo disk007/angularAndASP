@@ -1,0 +1,13 @@
+namespace backend.Model.DTO
+{
+  public class UpdateUserDTO
+  {
+    public string fristname { get; set; }
+    public string lastname { get; set; }
+    public string email { get; set; }
+    public string phone { get; set; }
+    public int roleId { get; set; }
+    public DateTime create_at { get; set; }
+    public string username { get; set; }
+  }
+}

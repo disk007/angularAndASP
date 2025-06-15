@@ -1,0 +1,13 @@
+input:focus-visible {
+    outline: 2px solid var(--color-blue-500);
+    border-radius: 6px;
+}
+.search{
+  border-radius: 10px;
+}
+.icon{
+  font-size: 16px;
+  display: flex;
+  justify-content: end;
+  justify-content: center;
+}

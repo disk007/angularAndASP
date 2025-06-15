@@ -1,0 +1,176 @@
+<div class="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+    <div class="bg-white text-black rounded-lg shadow-lg w-[1000px]">
+      <form [formGroup]="addUser" (ngSubmit)="onFormSubmit()">
+      <div class="flex justify-between p-5 border-gray-300 border-b-[1px]">
+        <div>Add User</div>
+        <div (click)="handleClose()" class="flex cursor-pointer hover:bg-gray-200"><mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="close"></mat-icon></div>
+      </div>
+      <div class="mt-5 py-5 px-7 text-sm w-full text-black/70">
+        <div>
+          <input formControlName="userId" name="userId" type="text" class="border-[1px] p-2 w-full placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="User ID *">
+          <div *ngIf="addUser.get('userId')?.touched && addUser.get('userId')?.invalid" class="text-red-500 text-xs h-1">
+            Id is required.
+          </div>
+        </div>
+        <div class="flex mt-5">
+          <div class="w-full">
+            <input formControlName="firstname" name="firstname" type="text" class="border-[1px] p-2 w-full mr-3 placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="First Name ID *">
+            <div *ngIf="addUser.get('firstname')?.touched && addUser.get('firstname')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('firstname')?.errors?.['required']">
+                Firstname is required.
+              </div>
+              <div *ngIf="addUser.get('firstname')?.errors?.['pattern']">
+                Firstname must not contain numbers or special characters.
+              </div>
+            </div>
+          </div>
+          <div class="w-full ml-3">
+            <input formControlName="lastname" name="lname" type="text" class="border-[1px] p-2 w-full  placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Last Name ID *">
+            <div *ngIf="addUser.get('lastname')?.touched && addUser.get('lastname')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('lastname')?.errors?.['required']">
+                Lastname is required.
+              </div>
+              <div *ngIf="addUser.get('lastname')?.errors?.['pattern']">
+                Lastname must not contain numbers or special characters.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex mt-5 w-full text-black/70">
+          <div class="w-full mr-3">
+            <input formControlName="email" name="email" type="text" class="border-[1px] p-2 w-full placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Email ID *">
+            <div *ngIf="addUser.get('email')?.touched && addUser.get('email')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('email')?.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="addUser.get('email')?.errors?.['email']">
+                Email is invalid.
+              </div>
+            </div>
+          </div>
+          <div class="w-full mx-3">
+            <input formControlName="phone" name="phone" type="text" class="border-[1px] p-2 w-full placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Mobile ID *">
+            <div *ngIf="addUser.get('phone')?.touched && addUser.get('phone')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('phone')?.errors?.['required']">
+                Phone is required.
+              </div>
+              <div *ngIf="addUser.get('phone')?.errors?.['pattern']">
+                Please enter a 10-digit phone number.
+              </div>
+            </div>
+          </div>
+          <div class="w-full ml-3 border-[1px] border-gray-300 rounded-lg cursor-pointer">
+            <!-- <div class="ml-3 w-full border-[1px] p-2 border-gray-300 rounded-lg flex justify-between items-center"> Select Role Type *</div> -->
+            <div #dropdownRef class="w-full h-full relative p-2">
+              <div class="inset-0 absolute h-full w-full flex justify-between items-center" (click)="openRole()">
+                <div class="pl-2 ">{{ addUser.get('role')?.value || 'Select Role Type *' }}</div>
+                <mat-icon aria-hidden="false" aria-label="Example unfold_more icon" fontIcon="unfold_more"></mat-icon>
+              </div>
+              <div *ngIf="ModalRole" class="right-0 mt-7 absolute w-full bg-white border-gray-300 rounded-lg border-[1px]">
+                <div
+                *ngFor="let role of roles"
+                class="p-2 cursor-pointer hover:bg-gray-100 border-b-[1px] border-gray-200 last:border-b-0"
+                (click)="selectRole(role)">
+                {{ role }}
+              </div>
+              </div>
+            </div>
+            <div *ngIf="addUser.get('role')?.touched && addUser.get('role')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('role')?.errors?.['required']">
+                Role is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex mt-5 w-full text-black/70">
+          <div class="w-full mr-3">
+            <input formControlName="username" name="username" type="text" class="border-[1px] p-2 w-full placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Username *">
+            <div *ngIf="addUser.get('username')?.touched && addUser.get('username')?.invalid" class="text-red-500 text-xs h-1">
+              Username is required.
+            </div>
+          </div>
+          <div class="w-full mx-3">
+            <input formControlName="password" name="password" type="password" class="border-[1px] p-2 w-full  placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Password *">
+            <div *ngIf="addUser.get('password')?.touched && addUser.get('password')?.invalid" class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('password')?.errors?.['required']">
+                Password is required.
+              </div>
+              <div *ngIf="addUser.get('password')?.errors?.['minlength']">
+                Password must 5 min length.
+              </div>
+            </div>
+          </div>
+          <div class="w-full ml-3">
+            <input formControlName="cPassword" name="cPassword" type="password" class="border-[1px] p-2 w-full  placeholder:text-black/70 border-gray-300 rounded-lg" placeholder="Confirm Password *">
+            <div *ngIf="addUser.get('cPassword')?.touched " class="text-red-500 text-xs h-1">
+              <div *ngIf="addUser.get('cPassword')?.errors?.['required']">
+                Confirm password is required.
+              </div>
+              <div *ngIf="addUser.errors?.['mismatch'] ">
+                Passwords do not match.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table-auto w-full mt-5">
+        <thead class="bg-sky-100 text-gray-500">
+            <tr>
+            <td class="py-4 pl-7">Module Permission</td>
+            <td class="text-center">Read</td>
+            <td class="text-center">Write</td>
+            <td class="text-center">Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b-[1px] border-gray-300">
+            <td class="px-7 py-4 text-sm">
+                Super Admin
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" checked>
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" checked>
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" checked>
+            </td>
+            </tr>
+            <tr class="border-b-[1px] border-gray-300">
+            <td class="px-7 py-4 text-sm">
+                Admin
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" checked>
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" >
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" >
+            </td>
+            </tr>
+            <tr class="border-b-[1px] border-gray-300">
+            <td class="px-7 py-4 text-sm">
+                Employee
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" checked>
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" >
+            </td>
+            <td class="text-sm text-gray-500 text-center pointer-events-none">
+              <input type="checkbox" class="accent-black" >
+            </td>
+            </tr>
+        </tbody>
+      </table>
+      <div class="my-5 flex justify-end">
+        <button type="submit" class="text-white py-1 px-2 bg-sky-500 rounded-lg text-sm mr-2 hover:bg-sky-600 cursor-pointer">Add User</button>
+        <button type="button" (click)="handleClose()" class="cursor-pointer hover:text-gray-400 hover:border-gray-300 text-gray-300 py-1 px-2 bg-white border-[1px] border-gray-300 rounded-lg text-sm ml-2 mr-4">Cancel</button>
+      </div>
+    </form>
+    </div>
+  </div>

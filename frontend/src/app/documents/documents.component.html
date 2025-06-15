@@ -1,0 +1,111 @@
+<div class="ml-[240px] px-6 pb-5">
+    <div class="text-2xl text-blue-500 font-medium mb-5">Documents</div>
+    <div class="flex flex-wrap w-full justify-center items-center xl:justify-between">
+        <div class="flex relative w-full 2xl:w-[88%] ">
+            <div class="absolute bottom-3 top-3 text-gray-500 left-1">
+                <mat-icon aria-hidden="false" aria-label="Example search icon" class="text-sm" fontIcon="search"></mat-icon>
+            </div>
+            <input class="w-full bg-white pl-8 py-3 placeholder:text-gray-500 search" type="text" name="" id="" placeholder="Search documents">
+        </div>
+        <div class="flex 2xl:mt-0 mt-2">
+            <div class="flex items-center text-gray-700 mr-4">
+                <span class="mx-2">Sort by</span>
+                <mat-icon aria-hidden="false" aria-label="Example keyboard_arrow_down icon" fontIcon="keyboard_arrow_down"></mat-icon>
+            </div>
+            <div class="flex items-center text-gray-700 ">
+                <mat-icon aria-hidden="false" aria-label="Example tune icon" fontIcon="tune"></mat-icon>
+            </div>
+        </div>
+        <div class="flex lg:justify-between justify-center flex-row mt-5 w-full flex-wrap">
+            <div class="flex items-center flex-wrap justify-center lg:mb-0 mb-2">
+                <div class="flex items-center mr-2 justify-center">
+                    <div class="text-sky-500 border-2 py-2 px-3 flex items-center border-gray-300">
+                        <mat-icon aria-hidden="false" aria-label="Example computer icon" fontIcon="computer"></mat-icon>
+                    </div>
+                </div>
+                <div class="flex items-center mx-2">
+                    <div class="text-sky-500 border-2 py-2 px-3 flex items-center border-gray-300">
+                        <mat-icon aria-hidden="false" aria-label="Example zoom_out_map icon" fontIcon="zoom_out_map"></mat-icon>
+                    </div>
+                </div>
+                <div class="flex items-center mx-2">
+                    <div class="text-sky-500 border-2 py-2 px-3 flex items-center border-gray-300">
+                        <mat-icon aria-hidden="false" aria-label="Example event_note icon" fontIcon="event_note"></mat-icon>
+                    </div>
+                </div>
+                <div class="flex items-center mx-2">
+                    <div class="text-sky-500 border-2 py-2 px-3 flex items-center border-gray-300">
+                        <mat-icon aria-hidden="false" aria-label="Example print icon" fontIcon="print"></mat-icon>
+                    </div>
+                </div>
+                <div class="flex items-center mx-2">
+                    <div class="text-sky-500 border-2 py-2 px-3 flex items-center border-gray-300">
+                        <mat-icon aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="relative flex justify-center lg:justify-end w-full flex-wrap">
+                    <div class="w-[200px] flex items-center justify-between border-[1px] mr-2 border-gray-300 rounded-sm text-gray-500 cursor-pointer p-3 hover:bg-gray-300 hover:text-gray-600">
+                        <div class="">This Month</div>
+                        <mat-icon aria-hidden="false" aria-label="Example unfold_more icon" fontIcon="unfold_more"></mat-icon>
+                    </div>
+                    <div class="flex w-[200px] items-center justify-between border-[1px] mx-2 border-gray-300 rounded-sm text-gray-500 cursor-pointer p-3 hover:bg-gray-300 hover:text-gray-600">
+                        <div class="">Documents</div>
+                        <mat-icon aria-hidden="false" aria-label="Example unfold_more icon" fontIcon="unfold_more"></mat-icon>
+                    </div>
+                    <div class="flex w-[50px] items-center justify-center ml-2 border-[1px] text-white bg-blue-500 hover:bg-blue-600 cursor-pointer p-3">
+                        <mat-icon aria-hidden="false" aria-label="Example add icon" fontIcon="add"></mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white my-5 w-full rounded-lg py-5 ">
+            <div class="text-black/70 font-medium px-5">List of documents</div>
+            <div class="text-sm text-gray-500 mb-5 px-5">Lorem ipsum </div>
+            <div class="border-t-[1px] overflow-x-auto border-gray-300 w-full">
+                <table class="table-auto px-5 mt-5 min-w-[1000px] lg:min-w-full">
+                    <tbody>
+                        <tr class="">
+                        <td class="flex items-center px-5 w-[10%] ">
+                            <div class=" text-sky-500 border-2 py-2 px-3 flex items-center my-1 border-none bg-gray-300">
+                                <mat-icon aria-hidden="false" aria-label="Example description icon" fontIcon="description"></mat-icon>
+                            </div>
+                        </td>
+                        <td class="text-sm text-gray-500 w-[10%] ">
+                            <div class="text-black">Lorem ipsum .</div>
+                            <div class="text-xs">24, Oct 2024</div>
+                        </td>
+                        <td class="text-xs text-gray-500 w-[75%] pl-1 pr-32 ">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro iusto consequuntur voluptatum perspiciatis 
+                            quia a cupiditate, omnis deleniti quis unde est aut error, cumque sapiente. Voluptate itaque aliquid excepturi cupiditate?
+                        </td>
+                        <td class="pt-4 w-[10%] text-center">
+                            <div class="flex justify-center gap-2 text-sky-500">
+                              <!-- ปุ่ม Edit -->
+                              <div class="border border-gray-300 w-7 h-7 flex items-center justify-center rounded pt-2 cursor-pointer">
+                                <mat-icon
+                                  fontIcon="border_color"
+                                  class="icon"
+                                  aria-hidden="false"
+                                  aria-label="Edit icon">
+                                </mat-icon>
+                              </div>
+                              <!-- ปุ่ม Delete -->
+                              <div class="border border-gray-300 w-7 h-7 flex items-center justify-center rounded pt-2 cursor-pointer">
+                                <mat-icon
+                                  fontIcon="delete"
+                                  class="icon"
+                                  aria-hidden="false"
+                                  aria-label="Delete icon">
+                                </mat-icon>
+                              </div>
+                            </div>
+                          </td>                          
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
